@@ -107,13 +107,16 @@ async fn fetch_mint_address_from_transaction(tx_signature: &String) -> Option<St
             EncodedTransaction::Json(ui_transaction) => {
                 match &ui_transaction.message {
                     UiMessage::Raw(raw_message) => {
-                        if let Some(mint_address) = raw_message.account_keys.get(1) {
-                            if token_mint == mint_address.to_string() {
-                                println!("{:?}", raw_message);
+                        for address in &raw_message.account_keys {
+                            // Check if the value ends with "pump"
+                            if address.ends_with("pump") {
+
+                                if token_mint == address.to_string() {
+                                    println!("{:?}", raw_message);
+                                }
+                                return Some(address.to_string());
+
                             }
-                            return Some(mint_address.to_string());
-                        } else {
-                            return None;
                         }
                     },
                     _ => {
