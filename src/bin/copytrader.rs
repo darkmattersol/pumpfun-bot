@@ -47,14 +47,14 @@ async fn main() {
             if log == "Program log: Instruction: Buy" {
                 if let Some(mint_address) = fetch_mint_address_from_transaction(&logs.value.signature.to_string()).await {
                     info!("detected a buy transaction. Sig: {}", logs.value.signature);
-                    info!("token mint address: {}, price:  amount: total price:", mint_address);
+                    info!("token mint address: {}", mint_address);
                 }
                 break;
             }
             else if log == "Program log: Instruction: Sell" {
                 if let Some(mint_address) = fetch_mint_address_from_transaction(&logs.value.signature.to_string()).await {
                     info!("detected a sell transaction. Sig: {}", logs.value.signature);
-                    info!("token mint address: {}, price: amount: total price:", mint_address);
+                    info!("token mint address: {}", mint_address);
                 }
                 break;
             }
