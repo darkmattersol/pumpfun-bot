@@ -15,3 +15,9 @@ Run the following command to get token buy/sell transaction
 ```
 cargo run --bin token
 ```
+
+Run the following command to get buy/sell transaction for a wallet address
+
+```
+cargo run --bin trackwallet
+```
